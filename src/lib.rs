@@ -1,8 +1,8 @@
 //! Collect a list of key-value pairs into a mapping of keys to collections of values.
 //!
 //! If you have a set of data that you want to collect into a map, by default you'll only keep the
-//! last value in the data set for that key. But what if you want instead to keep a collection of
-//! all the keys for each value? Enter [`AggregateMap`]!
+//! last value in the data for that key. But what if you want instead to keep a collection of all
+//! the values for each key? Enter [`AggregateMap`]!
 //!
 //!
 //! ```rust
