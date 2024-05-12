@@ -21,10 +21,12 @@
 //! ]);
 //! assert_eq!(collected.into_inner(), expected);
 //! ```
-//! [`AggregateMap`] can be used with any map type that implements the [`Map`] trait, such as
-//! [`HashMap`][std::collections::HashMap] or [`BTreeMap`][std::collections::BTreeMap].
 //!
-//! The collection type can be anything that implements [`Extend`] and [`Default`], like a
+//! [`AggregateMap`] can be used with any map type that implements this crate's [`Map`] trait, such
+//! as [`HashMap`][std::collections::HashMap] or [`BTreeMap`][std::collections::BTreeMap].
+//!
+//! The collection type doesn't have to be a [`Vec`], too, it can be anything that implements
+//! [`Extend`] and [`Default`]. For instance, here's an example with a
 //! [`HashSet`][std::collections::HashSet]:
 //! ```rust
 //! # use std::collections::{HashMap, HashSet};
@@ -107,8 +109,8 @@ impl<M> From<M> for AggregateMap<M> {
     }
 }
 
-/// A trait for "map" types (such as [`std::collections::HashMap`]) that you can collect into with
-/// an [`AggregateMap`].
+/// A trait for "map" types (such as [`HashMap`][std::collections::HashMap]) that you can collect
+/// into with an [`AggregateMap`].
 ///
 /// Implementations of this trait are provided for `std` maps, but if you have a custom map type you
 /// can implement this trait for it to be able to use it with [`AggregateMap`].
