@@ -79,6 +79,7 @@ pub mod hashmap;
 /// A wrapper around a "map" type that lets you collect an iterator of key-value pairs into a
 /// mapping between keys and collections of values, instead of just keys to values.
 #[derive(Default, Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct AggregateMap<M>(M);
 
 impl<M> AggregateMap<M> {
@@ -140,13 +141,3 @@ where
         this
     }
 }
-
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
-
-//     #[test]
-//     fn it_works() {
-//         let
-//     }
-// }

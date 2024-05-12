@@ -8,7 +8,7 @@ edition = "2021"
 default = ["hashmap"]
 hashmap = []
 btreemap = []
-
-
+serde = ["dep:serde"]
 
 [dependencies]
+serde = { version = "1", features = ["derive"], optional = true }
