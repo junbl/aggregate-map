@@ -2,6 +2,9 @@
 name = "aggregate-map"
 version = "1.0.0"
 edition = "2021"
+license = "Unlicense"
+description = "Collect key-values pairs into a mapping from keys to collections of values."
+repository = "https://github.com/junbl/aggregate-map"
 
 
 [features]
