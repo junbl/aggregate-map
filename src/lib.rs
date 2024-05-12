@@ -71,7 +71,6 @@
 //!     .collect();
 //! assert_eq!(collected, expected);
 //! ```
-use std::ops::{Deref, DerefMut};
 
 #[cfg(feature = "btreemap")]
 pub mod btreemap;
@@ -80,7 +79,7 @@ pub mod hashmap;
 
 /// A wrapper around a "map" type that lets you collect an iterator of key-value pairs into a
 /// mapping between keys and collections of values, instead of just keys to values.
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Hash)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct AggregateMap<M>(M);
 
@@ -90,19 +89,18 @@ impl<M> AggregateMap<M> {
         self.0
     }
 }
-impl<M> Deref for AggregateMap<M> {
-    type Target = M;
 
-    fn deref(&self) -> &Self::Target {
+impl<M> AsRef<M> for AggregateMap<M> {
+    fn as_ref(&self) -> &M {
         &self.0
     }
 }
-impl<M> DerefMut for AggregateMap<M> {
-    fn deref_mut(&mut self) -> &mut <Self as Deref>::Target {
+
+impl<M> AsMut<M> for AggregateMap<M> {
+    fn as_mut(&mut self) -> &mut M  {
         &mut self.0
     }
 }
-
 impl<M> From<M> for AggregateMap<M> {
     fn from(map: M) -> Self {
         Self(map)
