@@ -9,9 +9,16 @@ repository = "https://github.com/junbl/aggregate-map"
 
 [features]
 default = ["hashmap"]
+### Implementation for use with a HashMap.
 hashmap = []
+### Implementation for use with a BTreeMap.
 btreemap = []
+### Derives for Serialize and Deserialize.
 serde = ["dep:serde"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"], optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

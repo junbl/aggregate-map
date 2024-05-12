@@ -71,8 +71,13 @@
 //!     .collect();
 //! assert_eq!(collected, expected);
 //! ```
+#![cfg_attr(docsrs, feature(doc_cfg))]
+#![forbid(unsafe_code)]
+#![warn(clippy::pedantic)]
+
 
 #[cfg(feature = "btreemap")]
+#[cfg_attr(docsrs, doc(cfg(feature = "btreemap")))]
 pub mod btreemap;
 #[cfg(feature = "hashmap")]
 pub mod hashmap;
@@ -127,7 +132,7 @@ where
 {
     fn extend<T: IntoIterator<Item = (K, V)>>(&mut self, iter: T) {
         iter.into_iter()
-            .for_each(|(key, value)| self.0.insert(key, value))
+            .for_each(|(key, value)| self.0.insert(key, value));
     }
 }
 
